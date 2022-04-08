@@ -44,6 +44,7 @@ const dataList = document.querySelector('.js-list');
 const favoriteUl = document.querySelector('.js-favorite');
 let listCocktails = [];
 let listFavorite = [];
+let favoriteCocktail = 'js_favoriteCocktail'
 
 //evento que queremos que ejecute
 btnShare.addEventListener("click", handlerCocktails);
@@ -65,7 +66,12 @@ function filteredCocktail(data) {
     item.addEventListener("click", favouriteList);
     }
 
-    //cambio de clases con colores
+  //cambio de clases con colores
+   /* const favCockctail = document.querySelectorAll('.js_favoriteCocktail');
+    for(const drink of listFavorite) {
+      drink.classList.remove('fav_drink');
+      drink.classList.add('not_fav');
+    }*/
   }
 
 //función para añadir los favoritos a la lista del html
@@ -76,7 +82,6 @@ function renderFavorites(data) {
         html += `<li id="${drink.idDrink}" class="drinkItem"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;//añadimos los datos del api al html
         favoriteUl.innerHTML = html; 
       }
-      
   }
 
 //función para añadir a favoritos
@@ -146,6 +151,3 @@ if (listCocktailsStorage !== null) {
   listFavorite = listCocktailsStorage;
   renderFavorites(listFavorite);
 } 
-
-
-//queda cambiar las clases para que aparezca seleccionado de un color distinto los concteles de la lista
