@@ -44,7 +44,7 @@ const dataList = document.querySelector('.js-list');
 const favoriteUl = document.querySelector('.js-favorite');
 let listCocktails = [];
 let listFavorite = [];
-let favoriteCocktail = 'js_favoriteCocktail'
+
 
 //evento que queremos que ejecute
 btnShare.addEventListener("click", handlerCocktails);
@@ -56,22 +56,32 @@ function filteredCocktail(data) {
   let html = '';
   for(const drink of data) {
       const img = newImg(drink);//parámetro de drink
-      html += `<li id="${drink.idDrink}" class="drinkItem"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;//añadimos los datos del api al html
+      html += `<li id="${drink.idDrink}" class="drinkItem fav-color"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;//añadimos los datos del api al html
+      //style="background-color:"${drink.idCocktailSelected}"
       dataList.innerHTML = html; 
     }
     
     //hacemos click en un item
     const allDrinksItems = document.querySelectorAll('.drinkItem');//donde guardamos el valor de los li
     for (const item of allDrinksItems) {
-    item.addEventListener("click", favouriteList);
-    }
+      
+      item.classList.remove('fav-color__fav_drink');
+      item.classList.add('fav-color__not_fav');
+
+      console.log('holi');
+
+      item.addEventListener("click", favouriteList);
+    };
+    
 
   //cambio de clases con colores
-   /* const favCockctail = document.querySelectorAll('.js_favoriteCocktail');
-    for(const drink of listFavorite) {
-      drink.classList.remove('fav_drink');
-      drink.classList.add('not_fav');
-    }*/
+  /*let favCockctail = document.querySelectorAll('.js_favoriteCocktail');
+    for(const item of listFavorite) {
+      console.log('holi');
+      item.classList.remove('fav_drink');
+      item.classList.add('not_fav');
+    };
+    favCockctail();*/
   }
 
 //función para añadir los favoritos a la lista del html
