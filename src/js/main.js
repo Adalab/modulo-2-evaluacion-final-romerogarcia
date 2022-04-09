@@ -64,9 +64,6 @@ function filteredCocktail(data) {
     //hacemos click en un item
     const allDrinksItems = document.querySelectorAll('.drinkItem');//donde guardamos el valor de los li
     for (const item of allDrinksItems) {
-      
-      item.classList.remove('fav-color__fav_drink');
-      item.classList.add('fav-color__not_fav');
 
       console.log('holi');
 
@@ -75,13 +72,16 @@ function filteredCocktail(data) {
     
 
   //cambio de clases con colores
-  /*let favCockctail = document.querySelectorAll('.js_favoriteCocktail');
+  /*let favCockctail = document.querySelectorById('.js_favoriteCocktail');
     for(const item of listFavorite) {
       console.log('holi');
       item.classList.remove('fav_drink');
       item.classList.add('not_fav');
     };
     favCockctail();*/
+
+    //document.querySelectorById('${drink.idDrink}').item.classList.add('fav_drink');
+    //document.querySelectorById('${drink.idDrink}').item.classList.remove('not_fav');
   }
 
 //función para añadir los favoritos a la lista del html
@@ -161,3 +161,5 @@ if (listCocktailsStorage !== null) {
   listFavorite = listCocktailsStorage;
   renderFavorites(listFavorite);
 } 
+
+
