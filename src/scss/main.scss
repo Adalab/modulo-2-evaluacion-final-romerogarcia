@@ -59,17 +59,19 @@
     width: 70px;
     margin-right: 15px;
     font-weight:bold;
-    background-color: rgba(203, 173, 212, 0.767);
-    color:beige;  
+    background-color: rgba(171, 106, 190, 0.767);
+    color:beige; 
+    cursor:pointer;
 }
 
 .btnReset {
     border: none;
     border-radius: 10%;
     width: 70px;
-    background-color: rgba(240, 238, 113, 0.767);
-    color:beige;
+    background-color: rgba(230, 227, 59, 0.767);
+    color:rgb(126, 113, 126);
     font-weight:bold;
+    cursor:pointer;
 }
 
 
@@ -109,7 +111,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 400px;
-    color: beige;
+    color: rgb(126, 113, 126);
     background-color: rgba(203, 173, 212, 0.767);
 }
 
@@ -119,7 +121,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 600px;
-    color: beige;
+    color: rgb(126, 113, 126);
     background-color: rgba(150, 248, 150, 0.767);
 }
 
