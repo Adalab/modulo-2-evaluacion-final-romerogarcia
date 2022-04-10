@@ -1,6 +1,5 @@
-
 'use strcit';
-//Constantes elementos que necesitamos
+//Constantes y variables
 const input = document.querySelector('.js-input');
 const btnShare  = document.querySelector('.js-btn-share');
 const btnReset = document.querySelector('.js-btn-reset');
@@ -9,14 +8,23 @@ const favoriteUl = document.querySelector('.js-favorite');
 let listCocktails = [];
 let listFavorite = [];
 
-
 //evento que queremos que ejecute cuando hacemos click en el botón buscar
 btnShare.addEventListener("click", handlerCocktails);
+btnReset.addEventListener("click", resetFavotites);
 
 
-/////////////////FUNCIONES//////////
+//función jefa para ejecutar las demás funciones 
+function handlerCocktails(event) {
+  event.preventDefault();
+  getApi();
+  renderCocktail(listCocktails);
+  //resetFavorites();
+  //removeFavs();
+}
+
+/////////////////FUNCIONES/////////////
 //función para filtar la bebida escrita con los datos
-function filteredCocktail(data) {
+function renderCocktail(data) {
   let html = '';
   for(const drink of data) {
       const img = newImg(drink);//parámetro de drink
@@ -24,7 +32,6 @@ function filteredCocktail(data) {
       //style="background-color:"${drink.idCocktailSelected}"
       dataList.innerHTML = html; 
     }
-    
     //hacemos click en un item
     const allDrinksItems = document.querySelectorAll('.drinkItem');//donde guardamos el valor de los li
     for (const item of allDrinksItems) {
@@ -46,9 +53,9 @@ function filteredCocktail(data) {
 
     //document.querySelectorById('${drink.idDrink}').item.classList.add('fav_drink');
     //document.querySelectorById('${drink.idDrink}').item.classList.remove('not_fav');
-  }
+  };
 
-//función para añadir los favoritos a la lista del html
+//función para pintar los favoritos
 function renderFavorites(data) {
     let html = '';
     for(const drink of data) {
@@ -56,7 +63,7 @@ function renderFavorites(data) {
         html += `<li id="${drink.idDrink}" class="drinkItem"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;//añadimos los datos del api al html
         favoriteUl.innerHTML = html; 
       }
-  }
+  };
 
 //función para añadir a favoritos
 function favouriteList(event) {
@@ -66,25 +73,20 @@ function favouriteList(event) {
       {
         return fav.idDrink === idCocktailSelected;
       });
-
-      //saber si esta o no 
       const favoriteFound = listFavorite.findIndex(fav => {
         return fav.idDrink === idCocktailSelected;
       });
-     //si no esta añadimos y meterlo en el array de fav
       if(favoriteFound === -1){
         listFavorite.push(cocktailClick);
         console.log('me has añadido a fav');
       } else {
-        //si esta eliminame el elemento
         listFavorite.splice(favoriteFound, 1);
         console.log('no me has añadido a fav');
       }
       //como estamos modificando, debemos hacer que se guarde la lista
       localStorage.setItem("dataList", JSON.stringify(listFavorite));
       renderFavorites(listFavorite);
-  }
-  
+  };
 
 //función para generar los datos del Api Cocktails
 function getApi() {
@@ -94,9 +96,9 @@ function getApi() {
     .then(data => {
       //guardar  la info de cocteles
       listCocktails = data.drinks;
-      filteredCocktail(listCocktails);
+      renderCocktail(listCocktails);
     });
-}
+};
 
 //función para crear una img cuando no contiene img
 function newImg (drink) {
@@ -106,8 +108,7 @@ function newImg (drink) {
   } else {
     return drink.strDrinkThumb;
   }
-}
-
+};
 
 ////////////////reset///////////////////
 /*function removeFavs() {
@@ -117,34 +118,19 @@ function newImg (drink) {
 
 
 //función que recoge los datos de fav
-/*function RemoveClick () {
+function RemoveClick () {
   console.log('holi');
   renderFavorites();//llamo a la función que tiene los datos de la lista de favoritos
-}
+};
 
 //función resetear los datos de la lista de favoritos
 function resetFavotites() {
-  const reset = document.querySelector('.js-btn-reset');
+  const resetItems = document.querySelector('.js-btn-reset');
   console.log('hago click reset');
-  for(const resetFav of reset ) {
+  for(const resetFav of resetItems ) {
     resetFav.addEventListener("click", RemoveClick)
   }
-}*/
-
-
-
-
-
-
-//función jefa para ejecutar las demás funciones 
-function handlerCocktails(event) {
-  event.preventDefault();
-  getApi();
-  filteredCocktail(listCocktails);
-  //resetFavorites();
-  //removeFavs();
-}
-
+};
 
 ///////////////////ALMACENAMIENTO LOCALSTORAGE////////
 const listCocktailsStorage = JSON.parse(localStorage.getItem('dataList')); 
@@ -152,6 +138,6 @@ const listCocktailsStorage = JSON.parse(localStorage.getItem('dataList'));
 if (listCocktailsStorage !== null) {
   listFavorite = listCocktailsStorage;
   renderFavorites(listFavorite);
-} 
+};
 
 

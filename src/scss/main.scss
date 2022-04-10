@@ -1,21 +1,19 @@
-@import 'core/variables';
 @import 'core/reset';
 @import 'components/code';
-@import 'layout/header';
-@import 'layout/footer';
+;
+
 
 //añadir estilos para la web 
 * {
     font-family: 'Fira Sans', sans-serif;
-}
+};
 
 .container {
     background-image: linear-gradient(to left,pink,rgb(235, 191, 111));
     min-height: 100vh;
     background-size:cover;
     background-position: center; 
-  
-}
+};
 
 .title {
     font-size: 50px;
@@ -24,7 +22,7 @@
     padding-top: 50px;
     color: beige;
     font-family: 'Galada', cursive;
-}
+};
 
 .desc {
     display: flex;
@@ -32,16 +30,13 @@
     font-size: 16px;
     color: rgb(126, 113, 126);
     padding-bottom: 15px;
-
-}
-
+};
 
 .containerShare {
     display: flex;
     justify-content:flex-start;
     padding-bottom: 15px;
-}
-
+};
 
 .input {
     width: 400px;
@@ -51,7 +46,7 @@
     padding-left: 40px;
     margin-left: 330px;
     margin-right: 30px;
-}
+};
 
 .btnShare {
     border: none;
@@ -62,7 +57,7 @@
     background-color: rgba(171, 106, 190, 0.767);
     color:beige; 
     cursor:pointer;
-}
+};
 
 .btnReset {
     border: none;
@@ -72,17 +67,12 @@
     color:rgb(126, 113, 126);
     font-weight:bold;
     cursor:pointer;
-}
-
-
-
+};
 
 .containerItems {
     display: flex;
-    //flex-direction: row;
     justify-content: space-around;
-
-}
+};
 
 .container-section1 {
     display: flex;
@@ -94,7 +84,7 @@
     overflow:auto;
     background-color: rgba(231, 248, 248, 0.404);
     margin-bottom: 100px;
-}
+};
 
 .container-section2 {
     margin-right: 80px;
@@ -103,7 +93,7 @@
     overflow:auto;
     background-color: rgba(231, 248, 248, 0.404);
     margin-bottom: 100px;
-}
+};
 
 .title-list1 {
     display: flex;
@@ -113,7 +103,7 @@
     width: 400px;
     color: rgb(126, 113, 126);
     background-color: rgba(203, 173, 212, 0.767);
-}
+};
 
 .title-list2 {
     display: flex;
@@ -123,12 +113,12 @@
     width: 600px;
     color: rgb(126, 113, 126);
     background-color: rgba(150, 248, 150, 0.767);
-}
+};
 
 .ul1 {
     list-style: none;
     margin-bottom: 20px;
-}
+};
 
 .ul2 {
     list-style: none;
@@ -136,28 +126,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    //display: flex;
-    //flex-wrap: wrap;
-}
-
+};
 
 .drink_img {
     width: 100px;
     height: 100px;
     border-radius: 10px;
-}
+};
 
 .drink_title {
     font-size: small;
     color: rgb(126, 113, 126);
     padding-top: 10px;
     padding-bottom: 5px;
-    width: 100px;
-    
-}
+    width: 100px; 
+};
 
 //clases para señalar la favorita
-
 .fav-color{
     &__fav_drink {
     color: red;
@@ -167,6 +152,6 @@
     &__not_fav {
     width: 10px;
     }
-}
+};
 
 
