@@ -143,15 +143,13 @@
 };
 
 //clases para señalar la favorita
-.fav-color{
-    &__fav_drink {
-    color: red;
-    width: 10px;
+.fav_drink {
+    border: solid 3px rgba(188, 109, 212, 0.767);
+    border-radius: 10%;
+    margin-top: 5px;
+    padding: 10px;
     }
 
-    &__not_fav {
-    width: 10px;
-    }
-};
+
 
 

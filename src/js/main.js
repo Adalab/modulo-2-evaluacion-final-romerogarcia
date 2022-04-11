@@ -12,47 +12,35 @@ let listFavorite = [];
 btnShare.addEventListener("click", handlerCocktails);
 btnReset.addEventListener("click", resetFavotites);
 
-
 //función jefa para ejecutar las demás funciones 
 function handlerCocktails(event) {
   event.preventDefault();
   getApi();
   renderCocktail(listCocktails);
-  //resetFavorites();
-  //removeFavs();
 }
 
 /////////////////FUNCIONES/////////////
-//función para filtar la bebida escrita con los datos
+//función para pintar el coctel
 function renderCocktail(data) {
   let html = '';
   for(const drink of data) {
       const img = newImg(drink);//parámetro de drink
-      html += `<li id="${drink.idDrink}" class="drinkItem fav-color"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;//añadimos los datos del api al html
-      //style="background-color:"${drink.idCocktailSelected}"
+      const favoriteFound = listFavorite.findIndex(fav => {
+        return fav.idDrink === drink.idDrink;
+      });
+  
+      if(favoriteFound === -1) {
+        html += `<li id="${drink.idDrink}" class="drinkItem"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;
+      } else {
+        html += `<li id="${drink.idDrink}" class="drinkItem fav_drink"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;
+      }
       dataList.innerHTML = html; 
-    }
+    };
     //hacemos click en un item
     const allDrinksItems = document.querySelectorAll('.drinkItem');//donde guardamos el valor de los li
     for (const item of allDrinksItems) {
-
-      console.log('holi');
-
-      item.addEventListener("click", favouriteList);
+    item.addEventListener("click", favouriteList);
     };
-    
-
-  //cambio de clases con colores
-  /*let favCockctail = document.querySelectorById('.js_favoriteCocktail');
-    for(const item of listFavorite) {
-      console.log('holi');
-      item.classList.remove('fav_drink');
-      item.classList.add('not_fav');
-    };
-    favCockctail();*/
-
-    //document.querySelectorById('${drink.idDrink}').item.classList.add('fav_drink');
-    //document.querySelectorById('${drink.idDrink}').item.classList.remove('not_fav');
   };
 
 //función para pintar los favoritos
@@ -61,14 +49,13 @@ function renderFavorites(data) {
     for(const drink of data) {
         const img = newImg(drink);//parámetro de drink
         html += `<li id="${drink.idDrink}" class="drinkItem"><h2 class="drink_title">${drink.strDrink}</h2><img class="drink_img" src=${img} alt=""></li>`;//añadimos los datos del api al html
-        favoriteUl.innerHTML = html; 
       }
+      favoriteUl.innerHTML = html; 
   };
 
 //función para añadir a favoritos
 function favouriteList(event) {
     const idCocktailSelected = event.currentTarget.id;
-    
     const cocktailClick = listCocktails.find(fav => 
       {
         return fav.idDrink === idCocktailSelected;
@@ -111,30 +98,15 @@ function newImg (drink) {
 };
 
 ////////////////reset///////////////////
-/*function removeFavs() {
-  document.getElementById('js-favorite').reset();
-  console.log('dando reset');
-}*/
-
-
-//función que recoge los datos de fav
-function RemoveClick () {
-  console.log('holi');
-  renderFavorites();//llamo a la función que tiene los datos de la lista de favoritos
-};
-
 //función resetear los datos de la lista de favoritos
 function resetFavotites() {
-  const resetItems = document.querySelector('.js-btn-reset');
+  listFavorite = [];
   console.log('hago click reset');
-  for(const resetFav of resetItems ) {
-    resetFav.addEventListener("click", RemoveClick)
-  }
+  renderFavorites(listFavorite);
 };
 
 ///////////////////ALMACENAMIENTO LOCALSTORAGE////////
 const listCocktailsStorage = JSON.parse(localStorage.getItem('dataList')); 
-
 if (listCocktailsStorage !== null) {
   listFavorite = listCocktailsStorage;
   renderFavorites(listFavorite);
