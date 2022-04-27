@@ -1,6 +1,6 @@
 @import 'core/reset';
 @import 'components/code';
-;
+
 
 
 //añadir estilos para la web 
@@ -140,14 +140,17 @@
     padding-top: 10px;
     padding-bottom: 5px;
     width: 100px; 
+    display: flex;
+    justify-content: center;
 };
 
 //clases para señalar la favorita
 .fav_drink {
-    border: solid 3px rgba(188, 109, 212, 0.767);
+    border: solid 3px rgba(240, 163, 62, 0.767);
+    background-color: rgba(255, 166, 0, 0.26);
     border-radius: 10%;
     margin-top: 5px;
-    padding: 10px;
+    padding: 15px;
     }
 
 
