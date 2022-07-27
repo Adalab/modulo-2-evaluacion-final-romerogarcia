@@ -210,7 +210,37 @@ background-color: #1B2430;
     padding-bottom: 30px;
 }
 
+
+.legal{
+    display:flex;
+
+}
+
+
 .copy{
     color:rgba(255, 255, 255, 0.5);
+    padding-top: 2px;
     padding-bottom: 20px;
+    padding-right: 40px;
+}
+
+.contact{
+    color:white;
+    text-decoration:underline;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.notice{
+    color:white;
+    text-decoration:underline;
+    padding-top: 2px;
+    cursor: pointer;
+    
+}
+.contact:hover{
+    color:#FFEA11;
+}
+.notice:hover{
+    color:#FFEA11;
 }
